@@ -20,9 +20,9 @@ def Compute_Block(cell_gradient_box):
             L2_norm = histogram_block * histogram_block
             L2_norm = L2_norm.sum()
             L2_norm = np.power(L2_norm,0.5)
-            extre_min = np.power(0.0001,2) #用一個極小值 怕L2_norm為零 分母為零
+            extre_min = np.power(0.0001,2) #創一個極小值 怕L2_norm為零 分母為零
             L2_norm = L2_norm + extre_min
-            #歸一化
+           
             histogram_block = histogram_block / L2_norm
             
             #顯示圖片
@@ -176,10 +176,9 @@ def Histogram_of_Oriented_Gradients():
     return hog_vector
 
 if __name__ == '__main__':
-    #讀取當前資料夾位置   
-    #input_image_path = (r'路徑\檔名.png')
     
-    this_file_path = os.getcwd()
+    #input_image_path = (r'路徑\檔名.png')       
+    this_file_path = os.getcwd() #讀取當前資料夾位置
     #input_image_path = (r'{}\running_man_1.png'.format(this_file_path))
     input_image_path = (r'{}\running_man_2.png'.format(this_file_path))
     #input_image_path = (r'{}\running_man_3.png'.format(this_file_path))
@@ -199,7 +198,7 @@ if __name__ == '__main__':
     #print輸出長度
     print ("輸出HOG長度為{}".format(hog_vector.shape[0]))
     
-    #將HOG輸出向量可視化    
+    #將HOG輸出特徵向量可視化    
     x = np.arange(hog_vector.shape[0])
     plt.title('HOG')
     plt.bar(x,hog_vector,color='red') 
